@@ -5,8 +5,8 @@ import { GET } from "@/axios/GET";
 import { POST } from "@/axios/POST";
 import { User_Info_Api } from "@/axios/dashBoardApi";
 // Recoil
-import { useRecoilState } from "recoil";
-import { FollowCntAtom } from "@/recoil/atoms/LoginStateAtom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { FollowCntAtom, LoginStateAtom } from "@/recoil/atoms/LoginStateAtom";
 import { SocialUserAtom } from "@/recoil/atoms/SocialAtom";
 // Assets
 import { AiOutlinePlus } from "react-icons/ai";
@@ -27,6 +27,7 @@ const User = () => {
   const [followCnt, setFollowCnt] = useRecoilState(FollowCntAtom);
   const [users, setUsers] = useRecoilState(SocialUserAtom);
   const router = useRouter();
+  const loginId = useRecoilValue(LoginStateAtom);
 
   const getUsers = async () => {
     const data = await GET("social/user", true);
@@ -34,17 +35,21 @@ const User = () => {
     if (data.status === 200) {
       setUsers(data.data);
     }
-    console.log(data.data);
   };
 
   useEffect(() => {
     getUsers();
   }, []);
 
+  const getUserInfoData = async () => {
+    const response = await User_Info_Api(loginId);
+    setFollowCnt(response.followCnt);
+    console.log("user:", response.followCnt);
+  };
+
   const handleAddFollow = async (userId: number) => {
     await POST(`social/follow?followId=${userId}`, null, true);
-    const response = await User_Info_Api(userId.toString());
-    setFollowCnt(response.followCnt);
+    getUserInfoData();
     getUsers();
   };
 

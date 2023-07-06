@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { User_Info_Api } from "@/axios/dashBoardApi";
 // Recoil
-import { useRecoilState } from "recoil";
-import { FollowCntAtom } from "@/recoil/atoms/LoginStateAtom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { FollowCntAtom, LoginStateAtom } from "@/recoil/atoms/LoginStateAtom";
+import { SocialUserAtom } from "@/recoil/atoms/SocialAtom";
 // Component
 import NavBar from "@/features/Header/NavBar";
 import Friends from "@/features/Social/components/Friends";
@@ -13,6 +14,9 @@ import Onboarding from "@/features/Social/components/Onboarding";
 
 export default function Social() {
   const [followCnt, setFollowCnt] = useRecoilState(FollowCntAtom);
+  const [users, setUsers] = useRecoilState(SocialUserAtom);
+  const loginId = useRecoilValue(LoginStateAtom);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -25,17 +29,12 @@ export default function Social() {
 
   useEffect(() => {
     const getUserInfoData = async () => {
-      const userid = Array.isArray(router.query.userid)
-        ? router.query.userid[0]
-        : router.query.userid;
-
-      if (userid) {
-        const response = await User_Info_Api(userid);
-        setFollowCnt(response.followCnt);
-      }
+      const response = await User_Info_Api(loginId);
+      setFollowCnt(response.followCnt);
+      console.log("social:", response.followCnt);
     };
     getUserInfoData();
-  }, [router.query]);
+  }, [users]);
 
   return (
     <div className="h-screen max-w-[75rem] mx-auto">
