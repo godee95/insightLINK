@@ -137,28 +137,28 @@ export default function NavBar() {
               onClick={handleShareIconClick}
             />
           </div>
-          <button
+          {/* <button
             className="relative flex flex-col items-center justify-center cursor-pointer w-7 h-7"
             onClick={handleOpenAlarm}
           >
             <AiTwotoneBell className="text-gray-800 text-[1rem] font-xeicon leading-normal" />
-            {/* {alarmCnt &&
+             {alarmCnt &&
               (notiCnt ? (
                 <div className="absolute flex items-center justify-center w-4 h-4 text-xs text-white bg-red-500 rounded-full -right-1 -top-1 z-1">
                   notiCnt
                 </div>
               ) : (
                 <></>
-              ))} */}
-            {alarmCnt && (
+              ))} 
+             {alarmCnt && (
               <div className="absolute flex items-center justify-center w-4 h-4 text-xs text-white bg-red-500 rounded-full -right-1 -top-1 z-1">
                 1
               </div>
-            )}
-            {/* {openAlarm && notiArr && <AlarmModal notiArr={notiArr} />} */}
+            )} 
+             {openAlarm && notiArr && <AlarmModal notiArr={notiArr} />} 
 
-            {openAlarm && <AlarmModal />}
-          </button>
+             {openAlarm && <AlarmModal />} 
+          </button>   */}
         </div>
         {userProfile ? (
           <div className="relative w-10 h-10">
