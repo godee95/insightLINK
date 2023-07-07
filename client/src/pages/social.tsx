@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { User_Info_Api } from "@/axios/dashBoardApi";
 // Recoil
-import { useRecoilState, useRecoilValue } from "recoil";
-import { FollowCntAtom, LoginStateAtom } from "@/recoil/atoms/LoginStateAtom";
+import { useRecoilState } from "recoil";
+import { FollowCntAtom } from "@/recoil/atoms/LoginStateAtom";
 import { SocialUserAtom } from "@/recoil/atoms/SocialAtom";
 // Component
 import NavBar from "@/features/Header/NavBar";
@@ -15,7 +15,6 @@ import Onboarding from "@/features/Social/components/Onboarding";
 export default function Social() {
   const [followCnt, setFollowCnt] = useRecoilState(FollowCntAtom);
   const [users, setUsers] = useRecoilState(SocialUserAtom);
-  const loginId = useRecoilValue(LoginStateAtom);
 
   const router = useRouter();
 
@@ -29,9 +28,8 @@ export default function Social() {
 
   useEffect(() => {
     const getUserInfoData = async () => {
-      const response = await User_Info_Api(loginId);
+      const response = await User_Info_Api();
       setFollowCnt(response.followCnt);
-      console.log("social:", response.followCnt);
     };
     getUserInfoData();
   }, [users]);

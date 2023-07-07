@@ -20,13 +20,20 @@ const axiosInstance = axios.create({
 
 export const Main_graph_Api = async (
   userid?: string
-): Promise<Main_graph_Api_DTO> => {
+): Promise<Main_graph_Api_DTO | number> => {
   let url = `/api/graph${userid ? `?userId=${userid}` : ""}`;
 
   try {
-    const response = await axiosInstance.get(url);
+    const response = await axiosInstance.get(url, {
+      validateStatus: function (status) {
+        return status < 600;
+      },
+    });
 
-    console.log(response);
+    if (response.status >= 500) {
+      return response.status;
+    }
+
     return response.data;
   } catch (err) {
     console.error(err);
@@ -42,7 +49,6 @@ export const Share_graph_Api = async (
   try {
     const response = await axios.get(url);
 
-    console.log(response);
     return response.data;
   } catch (err) {
     console.error(err);

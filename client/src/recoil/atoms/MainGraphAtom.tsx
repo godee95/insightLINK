@@ -22,6 +22,11 @@ export const NodeNameAtom = atom<string | null>({
   default: null,
 });
 
+export const NodeColorAtom = atom<string>({
+  key: "NodeColorAtom",
+  default: "blue-600",
+});
+
 export const CardDataAtom = atom<CardData | null>({
   key: "CardDataAtom",
   default: null,
@@ -75,4 +80,9 @@ export const EditModeAtom = atom({
 export const AlarmCntAtom = atom({
   key: "alarmCntAtom",
   default: true,
+});
+
+export const RefreshGraphAtom = atom({
+  key: "RefreshGraphAtom",
+  default: false,
 });

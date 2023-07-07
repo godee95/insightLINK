@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 // recoil
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   CardDetailOpenAtom,
   DashBoardCardAtom,
   NodeNameAtom,
+  NodeColorAtom,
 } from "@/recoil/atoms/MainGraphAtom";
 // library
 import * as echarts from "echarts";
@@ -12,7 +13,6 @@ import * as echarts from "echarts";
 import { Main_graph_Api_DTO, GraphNode } from "@/types/dashborad.types";
 
 import handleNodeUnclick from "@/features/Dashboard/MainGraph/components/OnClickEvent/MouseUp";
-
 import ChartDefaultOptions from "@/features/Dashboard/MainGraph/components/Graph/ChartDefaultOptions";
 import handleEditTag from "../OnClickEvent/handleEditTag";
 import handleDeleteTag from "../OnClickEvent/handleDeleteTag";
@@ -30,7 +30,8 @@ function Graph({ data, editMode }: MainGraphProps) {
   const [lastClickedNode, setLastClickedNode] = useState<string>("");
   const [openCard, setOpenCard] = useRecoilState(DashBoardCardAtom);
   const [nodeName, setNodeName] = useRecoilState(NodeNameAtom);
-  const [detailOpen, setDetailOpen] = useRecoilState(CardDetailOpenAtom);
+  const setNodeColor = useSetRecoilState(NodeColorAtom);
+  const setDetailOpen = useSetRecoilState(CardDetailOpenAtom);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [modalContent, setModalContent] = useState<React.ReactElement | null>(
@@ -75,6 +76,41 @@ function Graph({ data, editMode }: MainGraphProps) {
       }
     }
   }, [editMode, openCard]);
+
+  const getColorName = (el: string) => {
+    switch (el) {
+      case "#EE6565":
+        setNodeColor("colorRed");
+        break;
+      case "#FB8351":
+        setNodeColor("colorOrange");
+        break;
+      case "#FAC858":
+        setNodeColor("colorYellow");
+        break;
+      case "#91CB75":
+        setNodeColor("colorLightgreen");
+        break;
+      case "#3AA272":
+        setNodeColor("colorGreen");
+        break;
+      case "#73C0DE":
+        setNodeColor("colorSkyblue");
+        break;
+      case "#5470C6":
+        setNodeColor("colorBlue");
+        break;
+      case "#9A60B4":
+        setNodeColor("colorPurple");
+        break;
+      case "#FFC0CB":
+        setNodeColor("colorPink");
+        break;
+      default:
+        setNodeColor("blue-600");
+        break;
+    }
+  };
 
   useEffect(() => {
     if (chartRef.current && data) {
@@ -131,10 +167,12 @@ function Graph({ data, editMode }: MainGraphProps) {
       };
 
       const clickHandler = function (params: any) {
+        console.log(params.color);
         if (params.dataType === "node") {
           console.log("노드 클릭");
           if (!editMode) {
             handleNodeClick(params.name as string);
+            getColorName(params.color);
           } else {
             handleMouseDown(params);
           }

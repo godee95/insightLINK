@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 // recoil
 import { useRecoilValue } from "recoil";
-import { CardDetailOpenAtom, NodeNameAtom } from "@/recoil/atoms/MainGraphAtom";
+import {
+  CardDetailOpenAtom,
+  NodeNameAtom,
+  NodeColorAtom,
+} from "@/recoil/atoms/MainGraphAtom";
 // components
 import Card from "@/features/Dashboard/MainCard/components/Card";
 import CardDetail from "@/features/Dashboard/MainCard/components/CardDetail";
@@ -21,6 +25,7 @@ function CardPanel() {
   const [cardData, setCardData] = useState<CardData>();
   const detailOpen = useRecoilValue(CardDetailOpenAtom);
   const nodeName = useRecoilValue(NodeNameAtom);
+  const nodeColor = useRecoilValue<string>(NodeColorAtom);
   const getData = useCard();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -68,7 +73,12 @@ function CardPanel() {
       ) : (
         <>
           <div className="flex flex-row justify-between mb-4">
-            <div className="px-4 font-semibold leading-6 text-white bg-blue-600 rounded">
+            {/* <div
+              className={`px-4 font-semibold leading-6 text-white rounded bg-blue-600`}
+            > */}
+            <div
+              className={`px-4 font-semibold leading-6 text-white rounded bg-${nodeColor}`}
+            >
               # {nodeName}
             </div>
             <div>

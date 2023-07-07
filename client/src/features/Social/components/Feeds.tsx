@@ -9,7 +9,7 @@ import CardDetail from "./CardDetail";
 // Types
 import { FeedCardData } from "@/types/dashborad.types";
 // Assets
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiTwotoneCrown } from "react-icons/ai";
 
 const Feeds = () => {
   const [cards, setCards] = useState<FeedCardData[]>();
@@ -54,26 +54,47 @@ const Feeds = () => {
             return (
               <div
                 key={index}
-                className="relative w-[10rem] h-[10rem] bg-gray-100 border-2 rounded border-gray-300 hover:border-blue-500 flex justify-center items-center cursor-pointer"
+                className="border-[0.1rem] rounded border-gray-300 hover:border-blue-500"
               >
-                <Image
-                  src={c?.cardImg}
-                  alt=""
-                  layout="fill"
-                  objectFit="cover"
-                  className="cursor-pointer"
-                  onClick={() => {
-                    setCardId(c.cardId);
-                    setUserId(c.userId);
-                    setShowModal(true);
-                  }}
-                />
-                <button
-                  onClick={() => handleClose(c?.userId)}
-                  className="absolute cursor-pointer svg-button-nomal right-3 top-3"
-                >
-                  <AiOutlineClose className="self-center z-1" size="1rem" />
-                </button>
+                <div className="relative w-[10rem] h-[10rem] flex justify-center items-center cursor-pointer">
+                  <Image
+                    src={c?.cardImg}
+                    alt=""
+                    layout="fill"
+                    objectFit="cover"
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setCardId(c.cardId);
+                      setUserId(c.userId);
+                      setShowModal(true);
+                    }}
+                  />
+                  <button
+                    onClick={() => handleClose(c?.userId)}
+                    className="absolute cursor-pointer svg-button-nomal right-3 top-3"
+                  >
+                    <AiOutlineClose className="self-center z-1" size="1rem" />
+                  </button>
+                </div>
+                {c?.isFriend ? (
+                  <div className="flex px-3 py-4 flex-col items-start gap-3 self-stretch">
+                    <p className="text-gray-400 font-ibm-plex-sans text-xs font-medium leading-normal tracking-tight flex flex-col flex-1">
+                      작성자: {c?.userName}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="flex px-3 py-4 flex-row justify-between gap-3 self-stretch">
+                    <p className="text-gray-400 font-ibm-plex-sans text-xs font-medium leading-normal tracking-tight flex flex-col flex-1">
+                      작성자: {c?.userName}
+                    </p>
+                    <div className="flex h-5 p-1 items-center gap-1 bg-gray-50">
+                      <AiTwotoneCrown className="text-gray-700 font-xeicon text-xs font-normal leading-normal" />
+                      <p className="text-gray-700 font-ibm-plex-sans text-xs font-medium leading-normal tracking-tight">
+                        추천
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             );
           })}

@@ -9,7 +9,7 @@ import { LoginStateAtom } from "@/recoil/atoms/LoginStateAtom";
 import { NotiCntAtom } from "@/recoil/atoms/HeaderAtom";
 
 import { GET } from "@/axios/GET";
-import useNotification from "@/features/Header/hooks/useNotification";
+// import useNotification from "@/features/Header/hooks/useNotification";
 // Components
 import UserModal from "@/features/User/UserModal";
 import BurgerMenu from "@/features/Header/componenets/BurgerMenu";
@@ -60,7 +60,8 @@ export default function NavBar() {
         objectType: "text",
         text: "나의 그래프를 확인해봐요.",
         link: {
-          mobileWebUrl: "https://insight-link-ten.vercel.app/dashboard/" + loginId,
+          mobileWebUrl:
+            "https://insight-link-ten.vercel.app/dashboard/" + loginId,
           webUrl: "https://insight-link-ten.vercel.app/dashboard/" + loginId,
         },
       });
@@ -90,7 +91,7 @@ export default function NavBar() {
     );
   };
 
-  const notiArr = useNotification();
+  // const notiArr = useNotification();
 
   return (
     <div className="flex items-center self-stretch justify-between flex-shrink-0 h-20 py-0 ">
@@ -144,16 +145,22 @@ export default function NavBar() {
             onClick={handleOpenAlarm}
           >
             <AiTwotoneBell className="text-gray-800 text-[1rem] font-xeicon leading-normal" />
-            {alarmCnt &&
+            {/* {alarmCnt &&
               (notiCnt ? (
                 <div className="absolute flex items-center justify-center w-4 h-4 text-xs text-white bg-red-500 rounded-full -right-1 -top-1 z-1">
                   notiCnt
                 </div>
               ) : (
                 <></>
-              ))}
+              ))} */}
+            {alarmCnt && (
+              <div className="absolute flex items-center justify-center w-4 h-4 text-xs text-white bg-red-500 rounded-full -right-1 -top-1 z-1">
+                1
+              </div>
+            )}
+            {/* {openAlarm && notiArr && <AlarmModal notiArr={notiArr} />} */}
 
-            {openAlarm && notiArr && <AlarmModal notiArr={notiArr} />}
+            {openAlarm && <AlarmModal />}
           </button>
         </div>
         {userProfile ? (

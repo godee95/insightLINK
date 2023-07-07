@@ -25,8 +25,8 @@ export default function NotFound({ errorMsg }: NotFoundPageProps) {
     <>
       <div>
         {" "}
-        <div className="flex flex-col items-center justify-center w-full bg-slate-100 dark:bg-DMMainColor dark:text-white">
-          <div className="flex flex-col items-center mt-40">
+        <div className="flex flex-col items-center justify-center w-full ">
+          <div className="flex flex-col items-center mt-72">
             <div className="mb-3">
               <BsExclamationTriangle className="w-40 h-40" />
             </div>

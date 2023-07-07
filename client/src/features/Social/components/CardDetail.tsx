@@ -139,7 +139,7 @@ const CardDetail = ({ cardId, userId }: CardDetail) => {
                 Uploaded by {detail?.userName}
               </p>
               <p className="text-base font-light leading-none tracking-widest text-gray-900">
-                {detail?.created_at.slice(0, 9)}
+                {detail?.created_at.slice(0, 10)}
               </p>
             </div>
             <div
@@ -147,9 +147,7 @@ const CardDetail = ({ cardId, userId }: CardDetail) => {
               onClick={cloneCard}
             >
               <AiOutlineUpload className="text-base font-normal text-white font-xeicon" />
-              <p className="text-lg font-semibold text-white">
-                Add to my cards
-              </p>
+              <p className="text-lg font-semibold text-white">카드 복제하기</p>
             </div>
           </div>
         </div>

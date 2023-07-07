@@ -5,8 +5,8 @@ import { GET } from "@/axios/GET";
 import { POST } from "@/axios/POST";
 import { User_Info_Api } from "@/axios/dashBoardApi";
 // Recoil
-import { useRecoilState, useRecoilValue } from "recoil";
-import { FollowCntAtom, LoginStateAtom } from "@/recoil/atoms/LoginStateAtom";
+import { useRecoilState } from "recoil";
+import { FollowCntAtom } from "@/recoil/atoms/LoginStateAtom";
 import { SocialUserAtom } from "@/recoil/atoms/SocialAtom";
 // Assets
 import { AiOutlinePlus } from "react-icons/ai";
@@ -27,7 +27,6 @@ const User = () => {
   const [followCnt, setFollowCnt] = useRecoilState(FollowCntAtom);
   const [users, setUsers] = useRecoilState(SocialUserAtom);
   const router = useRouter();
-  const loginId = useRecoilValue(LoginStateAtom);
 
   const getUsers = async () => {
     const data = await GET("social/user", true);
@@ -42,7 +41,7 @@ const User = () => {
   }, []);
 
   const getUserInfoData = async () => {
-    const response = await User_Info_Api(loginId);
+    const response = await User_Info_Api();
     setFollowCnt(response.followCnt);
     console.log("user:", response.followCnt);
   };
@@ -73,7 +72,8 @@ const User = () => {
               <div className="flex justify-between items-center self-stretch">
                 <div className="flex justify-center items-center gap-6">
                   <img
-                    src={u.img}
+                    // src={u.img}
+                    src="/insightLINK_profile.png"
                     className="w-[2rem] h-[2rem] rounded-full cursor-pointer"
                     alt="profile"
                     onClick={() => {

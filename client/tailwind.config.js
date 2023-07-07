@@ -3,6 +3,18 @@
 module.exports = {
   darkMode: "class",
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}", "./src/styles/dashboard.css"],
+  safelist: [
+    "bg-colorRed",
+    "bg-colorOrange",
+    "bg-colorYellow",
+    "bg-colorLightgreen",
+    "bg-colorGreen",
+    "bg-colorSkyblue",
+    "bg-colorBlue",
+    "bg-colorPurple",
+    "bg-colorPink",
+    "bg-blue-600",
+  ],
   theme: {
     fontFamily: {
       sans: ["var(--font-inter)"],
@@ -14,15 +26,6 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        NodeColor1: "#5470C6",
-        NodeColor2: "#91CC75",
-        NodeColor3: "#FAC858",
-        NodeColor4: "#EE6666",
-        NodeColor5: "#73C0DE",
-        NodeColor6: "#3BA272",
-        NodeColor7: "#FC8452",
-        NodeColor8: "#9A60B4",
-        NodeColor9: "#EA7CCC",
         colorRed: "#EE6565",
         colorOrange: "#FB8351",
         colorYellow: "#FAC858",

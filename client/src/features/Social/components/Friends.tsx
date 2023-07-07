@@ -82,9 +82,10 @@ const Friends = () => {
                   key={index}
                   className="flex flex-col justify-center items-center w-[6.25rem] h-[8.25rem] flex-shrink-0 m-2 gap-3"
                 >
-                  <div className="relative w-[6.25rem] h-[6.25rem] transition transform rounded-full cursor-pointer hover:-rotate-6 bg-colorBlue flex justify-center items-center">
+                  <div className="relative w-[6.25rem] h-[6.25rem] transition transform rounded-full cursor-pointer hover:-rotate-6 bg-gradient-to-r from-purple-600 to-pink-500 flex justify-center items-center">
                     <Image
-                      src={f.profile_img}
+                      // src={f.profile_img}
+                      src="/insightLINK_profile.png"
                       alt="Profile"
                       width={84} // rem to pixel conversion (1rem = 16px)
                       height={84} // rem to pixel conversion (1rem = 16px)

@@ -6,6 +6,12 @@ import { EditModeAtom } from "@/recoil/atoms/MainGraphAtom";
 import { BiCheck } from "react-icons/bi";
 import { SlGraph } from "react-icons/sl";
 
+import handleEditTag from "@/features/Dashboard/MainGraph/components/OnClickEvent/handleEditTag";
+import handleDeleteTag from "@/features/Dashboard/MainGraph/components/OnClickEvent/handleDeleteTag";
+import handleMerge from "@/features/Dashboard/MainGraph/components/OnClickEvent/handleMerge";
+import handleConnect from "@/features/Dashboard/MainGraph/components/OnClickEvent/handleConnect";
+import handleDisconnect from "@/features/Dashboard/MainGraph/components/OnClickEvent/handleDisconnect";
+
 export default function GraphEditBtn() {
   const [editMode, setEditMode] = useRecoilState(EditModeAtom);
 
