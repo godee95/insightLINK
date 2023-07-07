@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 //recoil
@@ -22,8 +21,6 @@ import tw from "tailwind-styled-components";
 import AlarmModal from "@/features/Header/componenets/AlarmModal";
 
 export default function NavBar() {
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
   const [userProfile, setUserProfile] = useState("");
   const [isUserModalOpen, setUserModalOpen] = useState(false);
   const [showImgModal, setShowImgModal] = useRecoilState(ImgModalAtom);
@@ -179,11 +176,7 @@ export default function NavBar() {
             onClick={handleUserIconClick}
           />
         )}
-        {/* {currentTheme === "dark" ? (
-          <BsSunFill size={30} onClick={() => setTheme("light")} />
-        ) : (
-          <BsFillMoonFill size={30} onClick={() => setTheme("dark")} />
-        )} */}
+
         <div
           className="flex items-center justify-center h-10 gap-1 px-4 bg-gray-900 rounded cursor-pointer"
           onClick={() => setShowImgModal(true)}
