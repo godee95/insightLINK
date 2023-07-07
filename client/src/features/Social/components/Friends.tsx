@@ -89,7 +89,7 @@ const Friends = () => {
                       alt="Profile"
                       width={84} // rem to pixel conversion (1rem = 16px)
                       height={84} // rem to pixel conversion (1rem = 16px)
-                      className="rounded-full cursor-pointer"
+                      className="rounded-full cursor-pointer w-[84px] h-[84px]"
                       onClick={() => {
                         setCardId(f.cardId);
                         setUserId(f.userId);

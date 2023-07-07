@@ -77,7 +77,7 @@ function CardPanel() {
               className={`px-4 font-semibold leading-6 text-white rounded bg-blue-600`}
             > */}
             <div
-              className={`px-4 font-semibold leading-6 text-white rounded bg-${nodeColor}`}
+              className={`flex items-center justify-center px-4 font-semibold leading-6 text-white rounded bg-${nodeColor}`}
             >
               # {nodeName}
             </div>
