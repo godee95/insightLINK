@@ -16,15 +16,13 @@ export default function Home() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     setToken(token);
-    localStorage.theme = "light";
-
     if (token) {
       router.push("/dashboard");
     }
   }, []);
 
   return (
-    <div className="fixed inset-0 flex flex-col justify-center items-center">
+    <div className="fixed inset-0 flex flex-col items-center justify-center">
       <p className="text-2xl">갤러리 속 숨겨진 인사이트를 이어주는 아카이브</p>
       <p className="py-[2rem] font-bold text-8xl">insightLINK</p>
       {!token && (
