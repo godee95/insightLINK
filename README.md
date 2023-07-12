@@ -25,7 +25,7 @@
 - demo 계정 : [test@test.com](mailto:test@test.com)
 - demo 계정 비밀번호 : 1234
 
-시연 영상 : 바로가기
+시연 영상 : [바로가기](https://www.youtube.com/watch?v=MyX1GJYwL6Q)
 
 현장 발표영상 : [바로가기](https://youtu.be/oumGWpIAhG0)
 
