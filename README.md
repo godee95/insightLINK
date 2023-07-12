@@ -1,65 +1,55 @@
-<br />
+# insightLINK
+![image](https://github.com/insight-LINK/insightLINK/assets/67596636/1fc2f2b2-40bd-420c-a8a7-ccd011ef37a8)
 
-server/.env
-```
-PORT = 8800
+*for Collaboration*
 
-MYSQL_HOST = 127.0.0.1
-MYSQL_USERNAME = root
-MYSQL_PASSWORD = 비빌번호
-MYSQL_DB = 데이터베이스
-MYSQL_LIMIT = 10
+## 목차
 
-MY_OCR_API_URL = OCR url
-MY_OCR_SECRET_KEY = OCR 키
+1. 프로젝트 개요
+2. 서비스 소개
+3. 서비스 구조도
+4. 프로젝트 포스터
 
-MY_OPENAI_API_KEY = 오픈 키
+## 프로젝트 개요
 
-S3_ACCESS_KEY = S3 에세스 키
-S3_SECRET_KEY = S3 시크릿 키
+프로젝트 기간 : 2023.06.01 ~ 2023.07.08 (5주)
 
-EXPORT_TAG_COUNT = 2
-```
+팀원 : 김세령(FE), 김정희(BE), 변다슬(FE/BE), 신병규(FE), 최성혁(BE), 허지수(BE)
 
-<br />
+서비스 사용 설명서 : 바로가기
 
-client/.env
-```
-GOOGLE_CLIENT_ID = 구글 클라이언트 아이디
-GOOGLE_CLIENT_SECRET = 구글 클라이언트 시크릿
-```
+웹사이트 : [바로가기](https://insight-link-ten.vercel.app/dashboard)
 
-<br />
-서버 실행
+- demo 계정 : [test@test.com](mailto:test@test.com)
+- demo 계정 비밀번호 : 1234
 
-```
-cd server
-npx nodemon
-```
+시연 영상 : 바로가기
 
-<br />
-클라이언트 실행
+현장 발표영상 : [바로가기](https://youtu.be/oumGWpIAhG0)
 
-```
-cd client
-npm run dev
-```
+(맨 위로)
 
-<br />
-클라이언트 db.json 실행
+## 서비스 소개
 
-```
-cd client
-npx json-server ./db.json --port 4000
-```
+### Highlighters는 이런 고민에서 시작되었습니다.
 
-<br />
-ERD <br />
+- 스마트폰 갤러리 속 방치된 수많은 스크린샷의 내용을 알긴 할까? (설문조사 결과 2030 100명 기준 평균 500장 소유)
+- 스크린샷의 내용이 자동으로 정리되고, 그 속에서 인사이트를 얻을 수는 없을까?
 
-![2023-06-20_2 23 58](https://github.com/insight-LINK/insightLINK/assets/50854903/e8ac7096-acfd-4d47-b10b-acd52fa784cb)
+### Highlighters는 이런 서비스입니다.
 
-<br />
-로그인 기능 <br />
- - google 소셜 로그인 <br />
- - JWT Access Token (Chrom - [Application] - [Loal Storage] - [ https://localhost:3000/] - token 확인 가능)<br />
- - 서버 Session Management <br />
+- 정리되지 않은 인사이트를 **그래프로 시각화**합니다. 유저가 업로드한 스크린샷을 바탕으로 주요 정보를 추출하여 **태그로 분류**합니다. 이를 통해 스크린샷 속 숨겨진 인사이트를 발견할 수 있습니다.
+- 인사이트 사이의 유사도를 분석하여 관심사가 **비슷한 유저를 추천**받습니다. 그리고 다른 유저의 인사이트를 **열람**하고 **복제** 가능합니다. 이를 통해 서로의 **인사이트를 공유**합니다.
+
+## DB 설계
+
+
+## 서비스 구조도
+<img width="739" alt="image" src="https://github.com/insight-LINK/insightLINK/assets/67596636/1b1b4f1e-4df6-4ff2-9df7-e0053a3a8a99">
+
+([맨 위로](https://github.com/insight-LINK/insightLINK/#readme-top))
+
+## 프로젝트 포스터
+![insightLINK-포스터_복사본-_1_-001](https://github.com/insight-LINK/insightLINK/assets/67596636/4cf774ce-dbe3-4203-af56-843d010ce6d8)
+
+([맨 위로](https://github.com/insight-LINK/insightLINK/#readme-top))
