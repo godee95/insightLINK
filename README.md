@@ -27,6 +27,11 @@
 
 시연 영상 : [바로가기](https://www.youtube.com/watch?v=MyX1GJYwL6Q)
 
+
+https://github.com/godee95/insightLINK/assets/50854903/136b46cb-fd3d-4523-aed3-06a8bd8e98d2
+
+
+
 현장 발표영상 : [바로가기](https://youtu.be/oumGWpIAhG0)
 
 (맨 위로)
